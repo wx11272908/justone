@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CLAM</string>
+    <string name="confirm">确定</string>
+    <string name="tradePasswordError">交易密码错误，请重新输入</string>
+    <string name="cancel">取消</string>
+    <string name="dialog_PWD_error">请输入该业务商户编号后6位</string>
+</resources>
