@@ -4,4 +4,7 @@
     <string name="tradePasswordError">交易密码错误，请重新输入</string>
     <string name="cancel">取消</string>
     <string name="dialog_PWD_error">请输入该业务商户编号后6位</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Home fragment</string>
 </resources>

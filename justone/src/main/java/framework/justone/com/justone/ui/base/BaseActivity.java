@@ -27,19 +27,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutId());
         TrapApp.addActivity(this);
 
-//        ActionBar actionBar = getSupportActionBar();
-//        if (null != actionBar) {
-//            setActionbar(actionBar, null, false);
-//        }
+        ActionBar actionBar = getSupportActionBar();
+        if (null != actionBar) {
+            setActionbar(actionBar, null, false);
+        }
         int containerId = getContainerId();
-        if (0 != containerId) {
+        if (containerId != 0) {
             FragmentManager fm = getSupportFragmentManager();
             Fragment fragment = fm.findFragmentById(getContainerId());
-            if (null != fragment) {
+
+            if (null == fragment) {
                 fragment = createFragment();
                 fm.beginTransaction().add(containerId, fragment)
-                        .addToBackStack(null)
-                        .commit();
+                        .addToBackStack(null).commit();
             }
         }
     }
@@ -85,8 +85,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void setActionbar(ActionBar actionBar, String title,
                                 boolean isBack) {
-        if (null == actionBar)
-            return;
+//        if (null == actionBar)
+//            return;
         // 自定义标题
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setDisplayShowCustomEnabled(true);
