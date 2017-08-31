@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -26,7 +27,61 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         TrapApp.addActivity(this);
+        initData();
+        initView();
+        initListener();
+        initFragment();
+    }
 
+    /**
+     * 获取布局文件
+     *
+     * @return
+     */
+    abstract protected int getLayoutId();
+
+    /**
+     * Fragment的Container
+     */
+    abstract protected int getContainerId();
+
+    /**
+     * 创建fragment
+     */
+    abstract protected Fragment createFragment();
+
+
+    /**
+     * 初始化组件
+     *
+     * @author trap
+     * @time 2017年08月31日15:42:54
+     */
+    abstract protected void initView();
+
+    /**
+     * 初始化参数数据
+     *
+     * @author trap
+     * @time 2017年08月31日15:44:05
+     */
+    abstract protected void initData();
+
+    /**
+     * 初始化绑定事件
+     *
+     * @author trap
+     * @time 2017年08月31日15:44:30
+     */
+    abstract protected void initListener();
+
+    /**
+     * 初始化fragment绑定
+     *
+     * @author trap
+     * @time 2017年08月31日15:47:25
+     */
+    private void initFragment() {
         ActionBar actionBar = getSupportActionBar();
         if (null != actionBar) {
             setActionbar(actionBar, null, false);
@@ -46,21 +101,20 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     /**
-     * 获取布局文件
+     * replaceFragment
      *
-     * @return
+     * @author trap
+     * @time 2017年08月31日16:02:30
      */
-    abstract protected int getLayoutId();
+    public void replaceFragment(Fragment newFragment) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
 
-    /**
-     * Fragment的Container
-     */
-    abstract protected int getContainerId();
-
-    /**
-     * 创建fragment
-     */
-    abstract protected Fragment createFragment();
+        ft.replace(getContainerId(), newFragment);
+//        if (num.length > 0)
+//            ft.addToBackStack(null);
+        ft.commit();
+    }
 
 //    @Override
 //    protected boolean onPrepareOptionsPanel(View view, Menu menu) {
@@ -85,8 +139,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void setActionbar(ActionBar actionBar, String title,
                                 boolean isBack) {
-//        if (null == actionBar)
-//            return;
+        if (null == actionBar)
+            return;
         // 自定义标题
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setDisplayShowCustomEnabled(true);

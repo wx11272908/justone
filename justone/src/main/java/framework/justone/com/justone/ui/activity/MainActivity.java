@@ -1,30 +1,28 @@
 package framework.justone.com.justone.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-import android.widget.TextView;
-
-import java.util.Map;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import framework.justone.com.justone.R;
 import framework.justone.com.justone.ui.base.BaseActivity;
+import framework.justone.com.justone.ui.fragment.FourthFragment;
 import framework.justone.com.justone.ui.fragment.FristFragment;
-import framework.justone.com.justone.util.SystemAndroidUtils;
+import framework.justone.com.justone.ui.fragment.SecondFragment;
+import framework.justone.com.justone.ui.fragment.ThirdFragment;
 
 
-public class MainActivity extends BaseActivity  {
+public class MainActivity extends BaseActivity {
 
     public static ActionBar actionBar;
+    private LinearLayout linFrist, linSecond, linThird, linFourth;
 
-    TextView textScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         actionBar = getSupportActionBar();
-
-        initView();
     }
 
     @Override
@@ -42,12 +40,48 @@ public class MainActivity extends BaseActivity  {
         return new FristFragment();
     }
 
-    private void initView(){
-//        textScreen = (TextView) findViewById(R.id.text_screen);
-//        Map<String,String> map = SystemAndroidUtils.getScreenPower(this);
-//        String width = map.get("width");
-//        String height = map.get("height");
-//        textScreen.setText("宽"+width+"高"+height);
+    @Override
+    protected void initView() {
+        linFrist = (LinearLayout) findViewById(R.id.lin_first);
+        linSecond = (LinearLayout) findViewById(R.id.lin_second);
+        linThird = (LinearLayout) findViewById(R.id.lin_third);
+        linFourth = (LinearLayout) findViewById(R.id.lin_fourth);
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initListener() {
+        linFrist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new FristFragment());
+            }
+        });
+
+        linSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new SecondFragment());
+            }
+        });
+
+        linThird.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new ThirdFragment());
+            }
+        });
+
+        linFourth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new FourthFragment());
+            }
+        });
     }
 
 

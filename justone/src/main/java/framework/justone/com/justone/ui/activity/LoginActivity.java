@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import framework.justone.com.justone.R;
 import framework.justone.com.justone.app.TrapApp;
-import framework.justone.com.justone.ui.base.BaseActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
