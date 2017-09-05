@@ -7,4 +7,11 @@
     <color name="black">#000000</color>
     <color name="lineColor">#CFD6D6</color>
     <color name="transparent">#00000000</color>
+
+    <color name="dot_blue">#33b5e5</color>
+    <color name="dot_white">#DDD</color>
+
+
+
+
 </resources>

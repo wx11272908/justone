@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,16 +20,17 @@ import framework.justone.com.justone.app.TrapApp;
  * Created by trap on 17/8/29.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseFragmentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         TrapApp.addActivity(this);
+        initData();
         initView();
         initListener();
-        initData();
+        initFragment();
     }
 
     /**
@@ -37,6 +39,16 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @return
      */
     abstract protected int getLayoutId();
+
+    /**
+     * Fragment的Container
+     */
+    abstract protected int getContainerId();
+
+    /**
+     * 创建fragment
+     */
+    abstract protected Fragment createFragment();
 
 
     /**
@@ -62,6 +74,57 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @time 2017年08月31日15:44:30
      */
     abstract protected void initListener();
+
+    /**
+     * 初始化fragment绑定
+     *
+     * @author trap
+     * @time 2017年08月31日15:47:25
+     */
+    private void initFragment() {
+        ActionBar actionBar = getSupportActionBar();
+        if (null != actionBar) {
+            setActionbar(actionBar, null, false);
+        }
+        int containerId = getContainerId();
+        if (containerId != 0) {
+            FragmentManager fm = getSupportFragmentManager();
+            Fragment fragment = fm.findFragmentById(getContainerId());
+
+            if (null == fragment) {
+                fragment = createFragment();
+                fm.beginTransaction().add(containerId, fragment)
+                        .addToBackStack(null).commit();
+            }
+        }
+    }
+
+
+    /**
+     * replaceFragment
+     *
+     * @author trap
+     * @time 2017年08月31日16:02:30
+     */
+    public void replaceFragment(Fragment newFragment) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        ft.replace(getContainerId(), newFragment);
+//        if (num.length > 0)
+//            ft.addToBackStack(null);
+        ft.commit();
+    }
+
+//    @Override
+//    protected boolean onPrepareOptionsPanel(View view, Menu menu) {
+//        if (view.getId() == android.R.id.home) {
+//            onBackPressed();
+//            return true;
+//        }
+//        return super.onPrepareOptionsPanel(view, menu);
+//    }
+
 
     @Override
     public void onBackPressed() {

@@ -7,14 +7,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import framework.justone.com.justone.R;
-import framework.justone.com.justone.ui.base.BaseActivity;
+import framework.justone.com.justone.ui.base.BaseFragmentActivity;
 import framework.justone.com.justone.ui.fragment.FourthFragment;
 import framework.justone.com.justone.ui.fragment.FristFragment;
 import framework.justone.com.justone.ui.fragment.SecondFragment;
 import framework.justone.com.justone.ui.fragment.ThirdFragment;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseFragmentActivity {
 
     public static ActionBar actionBar;
     private LinearLayout linFrist, linSecond, linThird, linFourth;
