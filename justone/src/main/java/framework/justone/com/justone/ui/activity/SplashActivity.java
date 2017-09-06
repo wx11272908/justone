@@ -97,10 +97,10 @@ public class SplashActivity extends AppCompatActivity {
 
         @Override
         public void onAnimationEnd(Animation animation) {
-//            if ((Boolean) Sp.getValue(SPKey.SPKEY_IS_FIRST_ENTER, false))//判断是否首次进入
+            if ((Boolean) Sp.getValue(SPKey.SPKEY_IS_FIRST_ENTER, true))//判断是否首次进入
                 toIntent(IntroduceActivity.class); // 动画结束后跳转到别的页面
-//            else
-//                toIntent(MainActivity.class); // 动画结束后跳转到别的页面
+            else
+                toIntent(MainActivity.class); // 动画结束后跳转到别的页面
         }
 
         @Override

@@ -7,4 +7,20 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Home fragment</string>
+
+
+
+    <!--综合-->
+    <!--我们收集网络上最好的作品，并把它们组合成故事。-->
+    <!--每天两次-->
+    <!--顶层故事每天给你两次，每次你选择-->
+    <!--决定性的-->
+    <!--我们表面上最重要的需要知道新闻。-->
+    <string name="first_title">Comprehensive</string>
+    <string name="first_desc">We collect the best pieces from around the web and combine them into a story</string>
+    <string name="second_title">Twice a day</string>
+    <string name="second_desc">Top stories delivered yo you twice daily at times you choose</string>
+    <string name="third_title">Definitive</string>
+    <string name="third_desc">We surface the most important need-to-know news</string>
+
 </resources>

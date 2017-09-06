@@ -1,12 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+
+
+    >
+
+    <framework.justone.com.justone.ui.view.ThirdScreenView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/round_view"/>
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:id="@+id/center_box_third"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3" />
+        android:id="@+id/title_text"
+        android:text="Definitive"
+        android:textSize="@dimen/text_26"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_50"
+        android:layout_above="@+id/desc_text"
+        android:textColor="@android:color/black"
+        />
 
-</LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/desc_text"
+        android:text="We surface the most important need-to-know news"
+        android:textSize="@dimen/text_16"
+        android:gravity="center"
+        android:layout_above="@+id/letsgo"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/dimen_45"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:textColor="@android:color/black"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:id="@+id/letsgo"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        android:text="Let's Go"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@color/dot_blue"
+
+        >
+
+    </Button>
+
+
+
+</RelativeLayout>
